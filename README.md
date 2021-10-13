@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# personal-library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was to learn how to use Redux and Redux ToolKit. It is a simple application where you can add a book to the library.
 
-## Available Scripts
+![screenshot](screenshot.png)
 
-In the project directory, you can run:
+|                                         |                                         |                                             |
+| :-------------------------------------: | :-------------------------------------: | :-----------------------------------------: |
+|        [Introduction](#book-app)        | [Table of Contents](#table-of-contents) | [Development Highlights](#personal-library) |
+|      [Installation](#installation)      |    [Page Directory](#page-directory)    |    [Code Hightlights](#code-highlights)     |
+| [Technologies Used](#Technologies-Used) |           [Credits](#Credits)           |             [License](#License)             |
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Install node modules
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+npm i
+```
 
-### `yarn test`
+2. Start App
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm start
+```
 
-### `yarn build`
+## Page Directory
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The Redux code is inside the store directory. The store contains, actions, reducers, and slices.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Code Highlights
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Creating the bookSlice.
 
-### `yarn eject`
+```JavaScript
+const bookSlice = createSlice({
+    name: 'books',
+    initialState,
+    reducers: {
+        addBook: {
+            reducer: (state, action) => {
+                state.books.push(action.payload)
+            },
+            prepare: (value) => {
+                return {
+                    payload: {
+                        ...value,
+                        date: new Date(),
+                        id: nanoid()
+                    }
+                }
+            }
+        },
+        deleteBook(state, action) {
+            state.books = state.books.filter(book => book.id !== action.payload.id)
+        }
+    }
+})
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technologies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Frontend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [HTML](https://www.w3schools.com/html/)
+- [JavaScript](https://www.javascript.com/)
+- [CSS](https://www.w3schools.com/css/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Frontend Framework/Library
 
-## Learn More
+- [ReactJS](https://reactjs.org/)
+- [React-Redux](https://react-redux.js.org/)
+- [Redux-Toolkit](https://redux-toolkit.js.org/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Credits
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The project followed the ![tutorial](https://www.youtube.com/channel/UCuE9oRyg4spY8W0z6eqhBrg) by Raul Terhes.
+| | |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **David Anusontarangkul** | [![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/anusontarangkul/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/anusontarangkul) |
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
