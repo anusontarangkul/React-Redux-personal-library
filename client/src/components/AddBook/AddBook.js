@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../../store/actions/bookActions'
+import { addBook } from '../../store/slices/bookSlice'
 import { nanoid } from 'nanoid';
 
 const AddBook = () => {
@@ -13,7 +13,7 @@ const AddBook = () => {
     const addBookHandler = (e) => {
 
         e.preventDefault()
-        console.log('h')
+
         dispatch(addBook({
             title, author, rating,
             id: nanoid()
